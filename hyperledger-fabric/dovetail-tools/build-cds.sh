@@ -34,26 +34,23 @@ function create {
     cp -rf ${modelDir}/META-INF /tmp/${NAME}/${NAME}/src
   fi
 
-  if [ -d "${FE_HOME}" ]; then
-    cp ${PATCH_PATH}/codegen.sh /tmp/${NAME}/${NAME}
-    cd /tmp/${NAME}/${NAME}
-    ./codegen.sh ${FE_HOME}
-    cd src
-    chmod +x gomodedit.sh
-    ./gomodedit.sh
-  fi
+  cp ${HOME}/codegen.sh /tmp/${NAME}/${NAME}
+  cd /tmp/${NAME}/${NAME}
+  ./codegen.sh
+  cd src
+  chmod +x gomodedit.sh
+  ./gomodedit.sh
 }
 
 function build {
   cd /tmp/${NAME}/${NAME}/src
-  go mod edit -replace=github.com/project-flogo/core@v0.10.1=github.com/project-flogo/core@${FLOGO_VER}
-  go mod edit -replace=github.com/project-flogo/flow@v0.10.0=github.com/project-flogo/flow@${FLOGO_VER}
-  go mod edit -replace=github.com/project-flogo/flow/activity/subflow@v0.9.0=github.com/project-flogo/flow/activity/subflow@master
+  go mod edit -replace=github.com/project-flogo/core=${FLOGO_REPO}/core@${FLOGO_VER}
+  go mod edit -replace=github.com/project-flogo/flow=${FLOGO_REPO}/flow@${FLOGO_VER}
+
   cd ..
   flogo build -e --verbose
   cd src
   go mod vendor
-  cp -R ${PATCH_PATH}/* vendor/github.com/project-flogo
   go build -mod vendor -o ../${NAME}_linux_amd64
   if [ ! -f "../${NAME}_linux_amd64" ]; then
     echo "failed to build chaincode"
