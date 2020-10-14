@@ -10,13 +10,13 @@ FE_SRC=${feroot}/lib/core/src
 FE_GENERAL=$(dirname "${feroot}")/data/localstack/wicontributions/Tibco/General
 
 function createEngineMod {
-  local engineDir=${FE_SRC}/git.tibco.com/git/product/ipaas/wi-contrib.git/engine
+  local engineDir=${FE_SRC}/git.tibco.com/git/product/ipaas/wi-contrib.git/
   if [ -f "${engineDir}/go.mod" ]; then
-    echo "go mod already initialized for git.tibco.com/git/product/ipaas/wi-contrib.git/engine"
+    echo "go mod already initialized for git.tibco.com/git/product/ipaas/wi-contrib.git/"
   else
-    echo "initilizing go mod for git.tibco.com/git/product/ipaas/wi-contrib.git/engine"
+    echo "initilizing go mod for git.tibco.com/git/product/ipaas/wi-contrib.git/"
     cd ${engineDir}
-    go mod init git.tibco.com/git/product/ipaas/wi-contrib.git/engine
+    go mod init git.tibco.com/git/product/ipaas/wi-contrib.git
     go mod tidy
   fi
 }
@@ -31,8 +31,8 @@ function createGeneralMod {
     echo "initilizing go mod for git.tibco.com/git/product/ipaas/wi-contrib.git/contributions/General/${1}"
     cd ${compDir}
     go mod init git.tibco.com/git/product/ipaas/wi-contrib.git/contributions/General/${1}
-    go mod edit -require=git.tibco.com/git/product/ipaas/wi-contrib.git/engine@v0.0.0
-    go mod edit -replace=git.tibco.com/git/product/ipaas/wi-contrib.git/engine@v0.0.0=${FE_SRC}/git.tibco.com/git/product/ipaas/wi-contrib.git/engine
+    go mod edit -require=git.tibco.com/git/product/ipaas/wi-contrib.git@v0.0.0
+    go mod edit -replace=git.tibco.com/git/product/ipaas/wi-contrib.git@v0.0.0=${FE_SRC}/git.tibco.com/git/product/ipaas/wi-contrib.git
     go mod tidy
   fi
 }
@@ -42,12 +42,12 @@ if [ ! -d "${FE_GENERAL}" ]; then
   exit 1
 fi
 
-if [ ! -f "fe-generator" ]; then
-  echo "build fe-generator"
-  go build
-fi
-echo "generate legacy metadata for FE general components"
-./fe-generator -dir ${FE_GENERAL}
+# if [ ! -f "fe-generator" ]; then
+#   echo "build fe-generator"
+#   go build
+# fi
+# echo "generate legacy metadata for FE general components"
+# ./fe-generator -dir ${FE_GENERAL}
 
 createEngineMod
 

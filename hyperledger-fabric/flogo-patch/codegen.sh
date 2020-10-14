@@ -43,8 +43,8 @@ function printGomod {
     fi
   done
   if [ ! -z "${general}" ]; then
-    echo "go mod edit -require=git.tibco.com/git/product/ipaas/wi-contrib.git/engine@v0.0.0"
-    echo "go mod edit -replace=git.tibco.com/git/product/ipaas/wi-contrib.git/engine@v0.0.0=${FE_SRC}/git.tibco.com/git/product/ipaas/wi-contrib.git/engine"
+    echo "go mod edit -require=git.tibco.com/git/product/ipaas/wi-contrib.git@v0.0.0"
+    echo "go mod edit -replace=git.tibco.com/git/product/ipaas/wi-contrib.git@v0.0.0=${FE_SRC}/git.tibco.com/git/product/ipaas/wi-contrib.git"
   fi
 }
 

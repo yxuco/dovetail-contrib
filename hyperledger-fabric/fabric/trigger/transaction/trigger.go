@@ -212,9 +212,8 @@ func (t *Trigger) Invoke(stub shim.ChaincodeStubInterface, fn string, args []str
 		log.Info("flogo flow did not return any data")
 		if reply.Message != "" {
 			return 300, reply.Message, nil
-		} else {
-			return 300, "No data returned", nil
 		}
+		return 300, "No data returned", nil
 	}
 
 	replyData, err := json.Marshal(reply.Returns)
