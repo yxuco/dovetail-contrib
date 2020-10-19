@@ -2,7 +2,9 @@ module github.com/TIBCOSoftware/dovetail-contrib/hyperledger-fabric/fabric/commo
 
 go 1.14
 
-replace github.com/project-flogo/flow => /Users/yxu/go/src/github.com/project-flogo/flow
+replace github.com/project-flogo/flow => github.com/yxuco/flow v1.1.1
+
+replace github.com/project-flogo/core => github.com/yxuco/core v1.1.1
 
 require (
 	github.com/Knetic/govaluate v3.0.0+incompatible // indirect
@@ -24,5 +26,5 @@ require (
 	github.com/stretchr/testify v1.6.1
 	github.com/sykesm/zap-logfmt v0.0.4 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0
-	google.golang.org/grpc v1.32.0 // indirect
+	google.golang.org/grpc v1.33.0 // indirect
 )

@@ -17,7 +17,11 @@ For example, you can install these packages to a demo directory by using the fol
 
 ```bash
 cd $HOME/work/DovetailDemo
-curl -sSL https://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9
+git clone git@github.com:hyperledger/fabric-samples.git
+curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9
+cd fabric-samples
+git checkout tags/v1.4.8
+
 export PATH=$HOME/work/DovetailDemo/fabric-samples/bin:$PATH
 export FAB_PATH=$HOME/work/DovetailDemo/fabric-samples
 git clone https://github.com/TIBCOSoftware/dovetail-contrib.git

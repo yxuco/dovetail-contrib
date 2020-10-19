@@ -65,7 +65,7 @@ build-fe-client: $(FE_CLIENT_FILE) clean-client
 
 .PHONY: start
 start:
-	cd $(FAB_PATH)/first-network && ./byfn.sh up -a -n -s couchdb -i 1.4.9
+	cd $(FAB_PATH)/first-network && ./byfn.sh up -a -s couchdb -i 1.4.9
 
 .PHONY: shutdown
 shutdown:

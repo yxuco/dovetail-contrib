@@ -1,6 +1,6 @@
 # marble
 
-This example uses [TIBCO Flogo® Enterprise](https://www.tibco.com/products/tibco-flogo) to implement the [Hyperledger Fabric](https://www.hyperledger.org/projects/fabric) sample chaincode [marbles02](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/marbles02). This sample demonstrates basic features of the Hyperledger Fabric, including creeation and update of states and composite-keys, and different types of queries for state and history with pagination. It is implemented using [Flogo®](https://www.flogo.io/) models by visual programming with zero-code. The Flogo® models can be created, imported, edited, and/or exported by using [TIBCO Flogo® Enterprise 2.8.0](https://docs.tibco.com/products/tibco-flogo-enterprise-2-8-0).
+This example uses [TIBCO Flogo® Enterprise](https://www.tibco.com/products/tibco-flogo) to implement the [Hyperledger Fabric](https://www.hyperledger.org/projects/fabric) sample chaincode [marbles02](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/marbles02/go). This sample demonstrates basic features of the Hyperledger Fabric, including creeation and update of states and composite-keys, and different types of queries for state and history with pagination. It is implemented using [Flogo®](https://www.flogo.io/) models by visual programming with zero-code. The Flogo® models can be created, imported, edited, and/or exported by using [TIBCO Flogo® Enterprise 2.10.0](https://docs.tibco.com/products/tibco-flogo-enterprise-2-10-0).
 
 ## Prerequisite
 
@@ -12,13 +12,13 @@ Skip to the next section if you do not plan to modify the included sample model.
 
 - Start TIBCO Flogo® Enterprise.
 - Open <http://localhost:8090> in Chrome web browser.
-- Create new Flogo App of name `marble_app` and choose `Import app` to import the model [`marble_app.json`](marble_app.json)
+- Create new Flogo App of name `marble` and choose `Import app` to import the model [`marble.json`](marble.json)
 - You can then add or update contract transactions using the graphical modeler of the TIBCO Flogo® Enterprise.
-- After you are done editing, export the Flogo App, and copy the downloaded model file, i.e., [`marble_app.json`](marble_app.json) to this `marble` sample folder.
+- After you are done editing, export the Flogo App, and copy the downloaded model file, i.e., [`marble.json`](marble.json) to this `marble` sample folder.
 
 ## Build and deploy chaincode to Hyperledger Fabric
 
-- In this `marble` sample folder, execute `make build` to generate the chaincode source code from the flogo model [`marble_app.json`](marble_app.json).
+- In this `marble` sample folder, execute `make build` to generate the chaincode source code from the flogo model [`marble.json`](marble.json).
 - Execute `make deploy` to build and deploy the chaincode to the `fabric-samples` chaincode folder. Note that you may need to set env `FAB_PATH` or edit the [`Makefile`](Makefile) and match the installation folder of `fabric-samples` if it is not downloaded to the default location under `$GOPATH`.
 
 The detailed commands of the above steps are as follows:
@@ -34,8 +34,8 @@ make deploy
 Start Hyperledger Fabric first-network with CouchDB:
 
 ```bash
-cd /path/to/fabric-samples/first-network
-./byfn.sh up -n -s couchdb
+cd /path/to/dovetail-contrib/hyperledger-fabric/samples/marble
+make start
 ```
 
 Use `cli` docker container to install and instantiate the `marble_cc` chaincode.
@@ -54,7 +54,7 @@ cd /path/to/dovetail-contrib/hyperledger-fabric/samples/marble
 make cli-test
 ```
 
-You may skip this test, and follow the steps in the next section to build client apps, and then use the client app to execute the tests. If you run the `cli` tests, however, it should print out 17 successful tests with status code `200` if the `marble_app` chaincode is installed and instantiated successfully on the Fabric network.
+You may skip this test, and follow the steps in the next section to build client apps, and then use the client app to execute the tests. If you run the `cli` tests, however, it should print out 17 successful tests with status code `200` if the `marble_cc` chaincode is installed and instantiated successfully on the Fabric network.
 
 Note that developers can also use Fabric dev-mode to test chaincode (refer [dev](./dev.md) for more details). For issues regarding how to work with the Fabric network, please refer the [Hyperledger Fabric docs](https://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
 

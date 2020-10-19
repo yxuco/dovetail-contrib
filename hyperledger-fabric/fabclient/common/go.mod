@@ -2,6 +2,10 @@ module github.com/TIBCOSoftware/dovetail-contrib/hyperledger-fabric/fabclient/co
 
 go 1.14
 
+replace github.com/project-flogo/core => github.com/yxuco/core v1.1.1
+
+replace github.com/project-flogo/flow => github.com/yxuco/flow v1.1.1
+
 require (
 	github.com/hyperledger/fabric-sdk-go v1.0.0-beta1
 	github.com/pkg/errors v0.9.1
