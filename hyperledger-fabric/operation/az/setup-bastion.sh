@@ -85,4 +85,4 @@ sed -i -e "s|^AZ_STORAGE_SHARE=.*|AZ_STORAGE_SHARE=${STORAGE_SHARE}|" ./dovetail
 go get -u github.com/project-flogo/cli/...
 
 # install fabric binary for chaincode packaging
-curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.18
+curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9

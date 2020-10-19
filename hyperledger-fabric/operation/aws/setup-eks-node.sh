@@ -88,4 +88,4 @@ sed -i -e "s|^AWS_FSID=.*|AWS_FSID=${AWS_FSID}|" ./dovetail-contrib/hyperledger-
 go get -u github.com/project-flogo/cli/...
 
 # install fabric binary for chaincode packaging
-curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.18
+curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9

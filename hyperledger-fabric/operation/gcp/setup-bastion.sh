@@ -64,4 +64,4 @@ sed -i -e "s|^GCP_STORE_IP=.*|GCP_STORE_IP=${STORE_IP}|" ./dovetail-contrib/hype
 go get -u github.com/project-flogo/cli/...
 
 # install fabric binary for chaincode packaging
-curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.18
+curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.9 1.4.9

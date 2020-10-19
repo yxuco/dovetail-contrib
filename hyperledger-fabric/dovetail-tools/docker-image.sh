@@ -9,7 +9,8 @@
 # or, 
 #   docker-image.sh upload
 # e.g.,
-#   ./docker-image.sh build -e ~/work/DovetailDemo/felib/flogo.zip
+#   ./docker-image.sh build -e ~/work/dovetail/felib/flogo.zip
+#   docker login
 #   ./docker-image.sh upload -u dhuser -d
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"; echo "$(pwd)")"
@@ -21,7 +22,7 @@ version: '2'
 services:
   dovetail:
     container_name: dovetail
-    image: hyperledger/fabric-tools:1.4.4
+    image: hyperledger/fabric-tools:1.4
     tty: true
     stdin_open: true
     environment:
@@ -30,7 +31,8 @@ services:
       - WORK=/root/work
       - DOVETAIL_REPO=github.com/yxuco
       - FLOGO_REPO=github.com/yxuco
-      - FLOGO_VER=v1.1.1
+      - FLOGO_REPO_VER=v1.1.1
+      - FLOGO_VER=v1.1.0
       - FE_HOME=/root/flogo/2.10
       - SHIM_PATH=/root/dovetail-contrib/hyperledger-fabric/shim
     working_dir: /root

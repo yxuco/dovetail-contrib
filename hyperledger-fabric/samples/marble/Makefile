@@ -1,6 +1,6 @@
 MAKEFILE_THIS := $(lastword $(MAKEFILE_LIST))
 SRC_PATH      := $(patsubst %/,%,$(dir $(abspath $(MAKEFILE_THIS))))
-APP_FILE      := marble_app.json
+APP_FILE      := marble.json
 APP_NAME      := marble_cc
 WORK_PATH     ?= $(HOME)/work/dovetail
 TOOL_PATH     := $(SRC_PATH)/../../dovetail-tools
@@ -26,9 +26,11 @@ build: $(APP_FILE) clean
 	$(TOOL_PATH)/build.sh cds -f $(APP_FILE) -n $(APP_NAME)
 
 .PHONY: deploy
-deploy: $(TOOL_PATH)/work/$(APP_NAME)_1.0.cds
-	mkdir -p $(CC_DEPLOY)/$(APP_NAME)
-	cp $(TOOL_PATH)/work/$(APP_NAME)_1.0.cds $(CC_DEPLOY)/$(APP_NAME)
+deploy: $(TOOL_PATH)/work/$(APP_HAME)
+	-rm -rf $(CC_DEPLOY)/$(APP_NAME)
+	cp -Rf $(TOOL_PATH)/work/$(APP_NAME)/$(APP_NAME) $(CC_DEPLOY)
+	cp $(TOOL_PATH)/work/$(APP_NAME)/$(APP_NAME)_linux_amd64 $(CC_DEPLOY)/$(APP_NAME)
+	cp $(TOOL_PATH)/work/$(APP_NAME)/$(APP_NAME)_1.0.cds $(CC_DEPLOY)/$(APP_NAME)
 	cp fn-cli-init.sh $(FAB_PATH)/first-network/scripts/fn-init-marble.sh
 	cp fn-cli-test.sh $(FAB_PATH)/first-network/scripts/fn-test-marble.sh
 
@@ -63,7 +65,7 @@ build-fe-client: $(FE_CLIENT_FILE) clean-client
 
 .PHONY: start
 start:
-	cd $(FAB_PATH)/first-network && ./byfn.sh up -a -n -s couchdb
+	cd $(FAB_PATH)/first-network && ./byfn.sh up -a -n -s couchdb -i 1.4.9
 
 .PHONY: shutdown
 shutdown:

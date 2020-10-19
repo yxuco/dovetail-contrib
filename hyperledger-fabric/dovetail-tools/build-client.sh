@@ -37,8 +37,8 @@ function create {
 
 function build {
   cd /tmp/${NAME}/${NAME}/src
-  go mod edit -replace=github.com/project-flogo/core=${FLOGO_REPO}/core@${FLOGO_VER}
-  go mod edit -replace=github.com/project-flogo/flow=${FLOGO_REPO}/flow@${FLOGO_VER}
+  go mod edit -replace=github.com/project-flogo/core=${FLOGO_REPO}/core@${FLOGO_REPO_VER}
+  go mod edit -replace=github.com/project-flogo/flow=${FLOGO_REPO}/flow@${FLOGO_REPO_VER}
   cd ..
   flogo build -e --verbose
   cd src
